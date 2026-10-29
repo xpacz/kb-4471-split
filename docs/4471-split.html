@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>#4471 · three problems, not one · support kb</title>
+<title>#4471 · two problems, not one · support kb</title>
 <style>
 
   :root {
@@ -34,29 +34,32 @@ aside.warn { border-color: var(--warn); background: var(--warn-bg); }
 .stamp { margin: 2rem 0 0; font: 0.85rem var(--mono); color: var(--muted); }
 .stamp b { color: var(--accent); letter-spacing: 0.04em; }
 
+.note { color: var(--muted); font-size: 0.85em; }
 </style></head><body>
 <div class="kb">
   <header>
     <a class="crumb" href="#">support desk · kb</a>
-    <h1>#4471 · three problems, not one</h1>
+    <h1>#4471 · two problems, not one</h1>
     <p class="meta"><span>owner <b>xpacz</b></span><span class="status open">open</span><span>reviewed 2026-10-28 · 0 days ago</span></p>
   </header>
   <main>
-<p><a href="#">#4471</a> was merged as one issue and marked known: the parser reads dates month first, the fix is queued. The desk's own cause rules (<code>causes.ts</code>) say the merged reports hold three problems. The queued fix closes one of them.</p>
-<aside class="warn">Not one issue. Three, and two of them have no ticket of their own.</aside>
+<p><a href="#">#4471</a> was merged as one issue and marked known: the parser reads dates month first, the fix is queued. The desk's own cause rules (<code>causes.ts</code>) say the merged reports hold two problems. The queued fix closes one of them.</p>
+<aside class="warn">Not one issue. Two, and one of them has no ticket of its own.</aside>
 <h2>What the 4471 reports hold</h2>
-<p class="sum"><strong>412</strong> reports merged into #4471 · <strong>3</strong> problems</p>
-<table><thead><tr><th>problem</th><th>cause</th><th>reports</th><th>tenants</th><th>seen</th></tr></thead><tbody><tr><td>parser reads mm/dd for day-first tenants</td><td><code>parser</code></td><td>374</td><td>11</td><td>2026-04-01 → 2026-10-04</td></tr><tr><td>booking-v3 form hint says MM/DD/YYYY</td><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td></tr><tr><td>a booking moves by one day</td><td><code>one-day move</code></td><td>5</td><td>5</td><td>2026-04-02 → 2026-10-04</td></tr></tbody></table>
-<h2>The three problems</h2>
+<p class="sum"><strong>412</strong> reports merged into #4471 · <strong>2</strong> problems</p>
+<table><thead><tr><th>problem</th><th>cause</th><th>reports</th><th>tenants</th><th>seen</th></tr></thead><tbody><tr><td>parser reads mm/dd for day-first tenants</td><td><code>parser</code></td><td>379</td><td>11</td><td>2026-04-01 → 2026-10-04</td></tr><tr><td>booking-v3 form hint says MM/DD/YYYY</td><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td></tr></tbody></table>
+<p class="note">5 reports read as a one-day move; counted under <code>parser</code>, where they are filed.</p>
+<h2>The two problems</h2>
 <ol>
 <li><strong>Parser.</strong> The shared parser reads every date month first. A day-first tenant's dates come out flipped, so 7 April arrives as 4 July. This is the problem #4471 describes, and the queued fix covers it.</li>
 <li><strong>Form hint.</strong> Through booking-v3, people type what the hint under the date field tells them, month first, and the form reads it the tenant's way. A parser fix does not touch this. The fix is the hint text, or reading the field as the hint says.</li>
-<li><strong>One-day move.</strong> The desk's own notes (<code>desk-notes.json</code>) read some reports as a move by one day, not a swap. Their words point at time zones: one meeting reached Lisbon on Tuesday and Toronto on Monday, one invite arrived before the booking existed, one tenant sees it only in June. This reading is mine, from a few reports, so treat it as a lead. It needs an engineer to reproduce it.</li>
 </ol>
-<p>Each problem now has its own issue in <a href="https://github.com/xpacz/kb-4471-split/issues">xpacz/kb-4471-split</a>.</p>
-<h2>Why one ticket held three</h2>
+<p>Each problem has its own issue in <a href="https://github.com/xpacz/kb-4471-split/issues">xpacz/kb-4471-split</a>.</p>
+<h2>A lead, not a problem</h2>
+<p>The desk's own notes (<code>desk-notes.json</code>) read some reports as a move by one day, not a swap. They are counted under the parser, where they are filed. Their words point at time zones: one meeting reached Lisbon on Tuesday and Toronto on Monday, one invite arrived before the booking existed, one tenant sees it only in June. That reading is mine, from a few reports. An engineer should reproduce it before it gets a ticket (see <a href="https://github.com/xpacz/kb-4471-split/issues/3">issue 3</a>, closed).</p>
+<h2>Why one ticket held two</h2>
 <ul>
-<li>The desk merges on the subject line (<a href="#">decision 0001</a>). All three problems arrive under the same few subjects, so the merge could not tell them apart.</li>
+<li>The desk merges on the subject line (<a href="#">decision 0001</a>). Both problems arrive under the same few subjects, so the merge could not tell them apart.</li>
 <li>Intake tags a report from the reporter's browser. That is a guess, and for the form-hint reports it is wrong about as often as it is right. The cause depends on the tenant: where they are and which booking form they run.</li>
 </ul>
 <h2>Lessons</h2>
