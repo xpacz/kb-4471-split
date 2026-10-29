@@ -1,0 +1,60 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: xpacz
+status: open
+reviewed: 2026-10-28
+signature: xpacz
+---
+
+<script>
+  import SplitTable from '#lib/kb/SplitTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const signature = 'xpacz';
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one issue and marked known: the parser reads dates month
+first, the fix is queued. The desk's own cause rules (`causes.ts`) say the merged reports hold
+three problems. The queued fix closes one of them.
+
+<Callout kind="warn">
+Not one issue. Three, and two of them have no ticket of their own.
+</Callout>
+
+## What the 4471 reports hold
+
+<SplitTable ticket={4471} />
+
+## The three problems
+
+1. **Parser.** The shared parser reads every date month first. A day-first tenant's dates come out
+   flipped, so 7 April arrives as 4 July. This is the problem #4471 describes, and the queued fix
+   covers it.
+2. **Form hint.** Through booking-v3, people type what the hint under the date field tells them,
+   month first, and the form reads it the tenant's way. A parser fix does not touch this. The fix
+   is the hint text, or reading the field as the hint says.
+3. **One-day move.** The desk's own notes (`desk-notes.json`) read some reports as a move by one
+   day, not a swap. Their words point at time zones: one meeting reached Lisbon on Tuesday and
+   Toronto on Monday, one invite arrived before the booking existed, one tenant sees it only in
+   June. This reading is mine, from a few reports, so treat it as a lead. It needs an engineer to
+   reproduce it.
+
+Each problem now has its own issue in [xpacz/kb-4471-split](https://github.com/xpacz/kb-4471-split/issues).
+
+## Why one ticket held three
+
+- The desk merges on the subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject)).
+  All three problems arrive under the same few subjects, so the merge could not tell them apart.
+- Intake tags a report from the reporter's browser. That is a guess, and for the form-hint
+  reports it is wrong about as often as it is right. The cause depends on the tenant: where they
+  are and which booking form they run.
+
+## Lessons
+
+- A ticket's count says how often people hit a problem, not how many problems there are.
+  Check the cause before you merge, not only the subject.
+- Merge by cause (`sameCause` in `causes.ts`), not by subject.
+
+<RenderStamp {signature} />
