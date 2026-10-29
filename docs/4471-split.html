@@ -40,7 +40,7 @@ aside.warn { border-color: var(--warn); background: var(--warn-bg); }
   <header>
     <a class="crumb" href="#">support desk · kb</a>
     <h1>#4471 · two problems, not one</h1>
-    <p class="meta"><span>owner <b>xpacz</b></span><span class="status open">open</span><span>reviewed 2026-10-28 · 0 days ago</span></p>
+    <p class="meta"><span>owner <b>xpacz</b></span><span class="status closed">closed</span><span>reviewed 2026-10-28 · 0 days ago</span></p>
   </header>
   <main>
 <p><a href="#">#4471</a> was merged as one issue and marked known: the parser reads dates month first, the fix is queued. The desk's own cause rules (<code>causes.ts</code>) say the merged reports hold two problems. The queued fix closes one of them.</p>
@@ -55,6 +55,8 @@ aside.warn { border-color: var(--warn); background: var(--warn-bg); }
 <li><strong>Form hint.</strong> Through booking-v3, people type what the hint under the date field tells them, month first, and the form reads it the tenant's way. A parser fix does not touch this. The fix is the hint text, or reading the field as the hint says.</li>
 </ol>
 <p>Each problem has its own issue in <a href="https://github.com/xpacz/kb-4471-split/issues">xpacz/kb-4471-split</a>.</p>
+<h2>Outcome</h2>
+<p>Engineering closed #4471 on 5 October. The parser problem is fixed ("parse dd/mm for eu locales"). The form-hint problem is won't fix, because the booking-v3 form was retired. Both issues are closed.</p>
 <h2>A lead, not a problem</h2>
 <p>The desk's own notes (<code>desk-notes.json</code>) read some reports as a move by one day, not a swap. They are counted under the parser, where they are filed. Their words point at time zones: one meeting reached Lisbon on Tuesday and Toronto on Monday, one invite arrived before the booking existed, one tenant sees it only in June. That reading is mine, from a few reports. An engineer should reproduce it before it gets a ticket (see <a href="https://github.com/xpacz/kb-4471-split/issues/3">issue 3</a>, closed).</p>
 <h2>Why one ticket held two</h2>

@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · two problems, not one'
 owner: xpacz
-status: open
+status: closed
 reviewed: 2026-10-28
 signature: v1.eyJzdWIiOiI3NTIyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyNDg1NzUsImV4cCI6MTc5MzMzNDk3NX0.26UkjY43d5eYF0tdKSn4mv-wHHDGFvDyT0JmIeGgvqc
 ---
@@ -37,6 +37,11 @@ Not one issue. Two, and one of them has no ticket of its own.
    is the hint text, or reading the field as the hint says.
 
 Each problem has its own issue in [xpacz/kb-4471-split](https://github.com/xpacz/kb-4471-split/issues).
+
+## Outcome
+
+Engineering closed #4471 on 5 October. The parser problem is fixed ("parse dd/mm for eu locales").
+The form-hint problem is won't fix, because the booking-v3 form was retired. Both issues are closed.
 
 ## A lead, not a problem
 
