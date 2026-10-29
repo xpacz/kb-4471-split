@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: xpacz
 status: open
 reviewed: 2026-10-28
-signature: xpacz
+signature: v1.eyJzdWIiOiI3NTIyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyNDg1NzUsImV4cCI6MTc5MzMzNDk3NX0.26UkjY43d5eYF0tdKSn4mv-wHHDGFvDyT0JmIeGgvqc
 ---
 
 <script>
@@ -12,7 +12,7 @@ signature: xpacz
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
-  const signature = 'xpacz';
+  const signature = 'v1.eyJzdWIiOiI3NTIyIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyNDg1NzUsImV4cCI6MTc5MzMzNDk3NX0.26UkjY43d5eYF0tdKSn4mv-wHHDGFvDyT0JmIeGgvqc';
 </script>
 
 [#4471](/kb/incidents/4471) was merged as one issue and marked known: the parser reads dates month
